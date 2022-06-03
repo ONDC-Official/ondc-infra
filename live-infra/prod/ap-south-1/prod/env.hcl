@@ -2,4 +2,7 @@
 # feed forward to the child modules.
 locals {
   environment = "prod"
+  namespace   = "ondc"
+  stage       = "prod"
+  name        = "infra"
 }

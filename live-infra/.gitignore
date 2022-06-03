@@ -15,7 +15,7 @@
 *.iml
 *.iws
 *.ipr
-.idea/
+../.idea/
 build/
 */build/
 out/
