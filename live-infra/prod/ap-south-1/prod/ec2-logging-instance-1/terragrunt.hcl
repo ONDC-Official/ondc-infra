@@ -39,7 +39,7 @@ inputs = {
   subnet                      = dependency.network.outputs.default_subnet
   associate_public_ip_address = true
   ebs_volume_count            = 1
-  instance_type               = "t2.nano"
+  instance_type               = "t3.large"
   region                      = local.region_vars.locals.aws_region
   security_groups             = [
     dependency.network.outputs.aws_default_security_group
