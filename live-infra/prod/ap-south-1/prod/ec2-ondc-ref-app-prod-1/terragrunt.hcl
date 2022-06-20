@@ -10,6 +10,7 @@ locals {
 
   common_vars = read_terragrunt_config("${dirname(find_in_parent_folders())}/_envcommon/commonlib.hcl")
 
+  common_scripts_path = "${dirname(find_in_parent_folders())}/scripts"
 
 }
 
@@ -33,7 +34,7 @@ dependency "key-pair" {
 inputs = {
   namespace                   = local.environment_vars.locals.namespace
   stage                       = local.environment_vars.locals.stage
-  name                        = "${ local.environment_vars.locals.name }-logging-instance-1"
+  name                        = "${ local.environment_vars.locals.name }-ref-app-prod"
   vpc_id                      = dependency.network.outputs.default_vpc
   ssh_key_pair                = dependency.key-pair.outputs.key_name
   subnet                      = dependency.network.outputs.default_subnet
@@ -75,4 +76,5 @@ inputs = {
     },
 
   ]
+  user_data = file("${local.common_scripts_path}/docker-compose-install.sh")
 }
