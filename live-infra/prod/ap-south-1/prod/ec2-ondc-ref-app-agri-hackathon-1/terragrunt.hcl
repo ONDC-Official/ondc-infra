@@ -34,14 +34,16 @@ dependency "key-pair" {
 inputs = {
   namespace                   = local.environment_vars.locals.namespace
   stage                       = local.environment_vars.locals.stage
-  name                        = "${ local.environment_vars.locals.name }-ref-app-prod"
+  name                        = "${ local.environment_vars.locals.name }-ref-app-agri-hackathon"
   vpc_id                      = dependency.network.outputs.default_vpc
   ssh_key_pair                = dependency.key-pair.outputs.key_name
   subnet                      = dependency.network.outputs.default_subnet
   associate_public_ip_address = true
   ebs_volume_count            = 1
   instance_type               = "t3.large"
-  assign_eip_address = false
+    ebs_volume_size             = 50
+  root_volume_size            = 50
+  assign_eip_address          = false
   region                      = local.region_vars.locals.aws_region
   security_groups             = [
     dependency.network.outputs.aws_default_security_group

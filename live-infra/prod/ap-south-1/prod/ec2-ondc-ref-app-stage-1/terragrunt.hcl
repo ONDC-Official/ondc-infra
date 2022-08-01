@@ -41,7 +41,9 @@ inputs = {
   associate_public_ip_address = true
   ebs_volume_count            = 1
   instance_type               = "t3.large"
+  assign_eip_address = false
   region                      = local.region_vars.locals.aws_region
+  root_volume_size            = 100
   security_groups             = [
     dependency.network.outputs.aws_default_security_group
   ]
