@@ -41,14 +41,15 @@ inputs = {
     dependency.default_network.outputs.aws_default_security_group
   ]
   storage_encrypted   = true
-  engine_version      = "11.13"
+  engine_version      = "11.16"
   apply_immediately   = true
   database_port       = 5432
   publicly_accessible = true
-  instance_class      = "db.t2.small"
+  instance_class      = "db.t2.large"
   multi_az            = false
   db_parameter_group  = "postgres11"
-  allocated_storage   = 50
+  allocated_storage   = 100
+  storage_type = "gp2"
   db_parameter        = [
     {
       name         = "rds.logical_replication"

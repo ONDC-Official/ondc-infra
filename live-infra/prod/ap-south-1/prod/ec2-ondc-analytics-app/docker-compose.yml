@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+
+  metabase:
+    image: metabase/metabase:v0.40.1
+    container_name: metabase
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: metabase
+      MB_DB_PORT: 5432
+      MB_DB_USER: metabase
+      MB_DB_PASS: ${METABASE_DB_PASS}
+      MB_DB_HOST: ${METABASE_DB_HOST}
+    expose:
+      - 80
+    ports:
+      - 80:3000
